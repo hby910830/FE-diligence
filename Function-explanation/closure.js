@@ -20,3 +20,35 @@ for (let i = 0; i < 6; i++) {
 		})
 	})(i)
 }
+
+
+
+//对象是穷人的闭包
+var obj = {
+	i: 0,
+	fn(){
+		console.log(this.i)
+	}
+}
+obj.fn() //0
+
+var handle = function(){
+	i = 0
+	return function(){
+		console.log(i)
+	}
+}()
+handle()//0
+
+
+//闭包是穷人的对象
+function createPerson(name, age){
+	return function(key){
+		if(key === 'name') return name
+		if(key === 'age') return age
+	}
+}
+
+var person = createPerson('hanbaoyi', 18)
+person('name') //hanbaoyi
+person('age') //18
