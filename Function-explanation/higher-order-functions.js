@@ -127,3 +127,16 @@ newF3
 // 所以f3.call = call
 // call.call(f3,{name: 'hby'},1,2,3)
 
+
+/*函数的组合*/
+function doubleSay(str){
+	return str + ',' + str
+}
+function capitalize(str){
+	return str[0].toUpperCase() + str.substring(1)
+}
+function exclaim(str){
+	return str + '!'
+}
+let result = exclaim(capitalize(doubleSay('hello')))
+result //"Hello,hello!"
