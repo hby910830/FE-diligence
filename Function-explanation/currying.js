@@ -7,7 +7,14 @@
 const add1 = a => b => a + b
 add1(1)(2) //3
 
-
+//面试题
+//如何把三参数函数add(1,2,3)变成curriedAdd(1)(2)(3)形式？
+const curriedAdd =
+	a =>
+		b =>
+			c =>
+				a + b + c
+curriedAdd(1)(2)(3) //6
 
 
 
