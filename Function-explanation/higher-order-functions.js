@@ -62,8 +62,8 @@ const f2 = function () {
 	console.log('arguments')
 	console.log(arguments)
 }
-const newF2 = f2.apply({name: 'hby'}, 1, 2, 3, 4)
-newF2()
+const newF2 = f2.apply({name: 'hby'}, [1, 2, 3, 4])
+newF2
 // this
 // {name: "hby"}
 // arguments
@@ -88,4 +88,42 @@ newF2()
 // var apply  = Function.prototype.apply
 // 所以f2.apply = apply
 // apply.call(f2,{name: 'hby'},[1,2,3])
+
+
+//Function.prototype.call
+const call = Function.prototype.call
+// call.call()是什么意思
+
+const f3 = function () {
+	console.log('this');
+	console.log(this)
+	console.log('arguments')
+	console.log(arguments)
+}
+const newF3 = f3.call({name: 'hby'}, 1, 2, 3, 4)
+newF3
+// this
+// {name: "hby"}
+// arguments
+// Arguments(4) [1, 2, 3, 4, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+/*推理*/
+// obj.method(a,b,c)
+// obj.method.call(obj,a,b,c)
+
+// 设 obj = f3
+// 设 method = call
+
+// 代入
+// f3.call(a,b,c)
+// f3.call.call(f3,a,b,c)
+
+// 代入参数
+// f3.call({name: 'hby'},1,2,3)
+// f3.call.call(f3,{name: 'hby'},1,2,3)
+
+// f3.call = Function.prototype.call
+// var call  = Function.prototype.call
+// 所以f3.call = call
+// call.call(f3,{name: 'hby'},1,2,3)
 
