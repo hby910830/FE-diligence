@@ -1,5 +1,6 @@
 // const bind = require('./index')
-const bind = require('./this-two-params')
+// const bind = require('./this-two-params')
+const bind = require('./Compatible-IE')
 
 Function.prototype.bind2 = bind
 
@@ -20,8 +21,19 @@ console.assert(newFn2()[1] === 123)
 console.assert(newFn2()[2] === 456)
 
 
-const anotherFn2 = fn2.bind2({name:'hby'},110)
-console.log(anotherFn2(120));
+const anotherFn2 = fn2.bind2({name: 'hby'}, 110)
+console.log(anotherFn2(120)); //[ { name: 'hby' }, 110, 120 ]
 console.assert(anotherFn2(120)[0].name === 'hby')
 console.assert(anotherFn2(120)[1] === 110)
 console.assert(anotherFn2(120)[2] === 120)
+
+
+//兼容IE
+var fn3 = function (p1, p2) {
+	return [this, p1, p2]
+}
+var anotherFn3 = fn3.bind2({name: 'hby'}, 110)
+console.log(anotherFn3(120)); //[ { name: 'hby' }, 110, 120 ]
+console.assert(anotherFn3(120)[0].name === 'hby')
+console.assert(anotherFn3(120)[1] === 110)
+console.assert(anotherFn3(120)[2] === 120)
