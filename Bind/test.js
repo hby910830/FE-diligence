@@ -18,3 +18,10 @@ console.log(newFn2()); //[ { name: 'hby' }, 123, 456 ]
 console.assert(newFn2()[0].name === 'hby')
 console.assert(newFn2()[1] === 123)
 console.assert(newFn2()[2] === 456)
+
+
+const anotherFn2 = fn2.bind2({name:'hby'},110)
+console.log(anotherFn2(120));
+console.assert(anotherFn2(120)[0].name === 'hby')
+console.assert(anotherFn2(120)[1] === 110)
+console.assert(anotherFn2(120)[2] === 120)
