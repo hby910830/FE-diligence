@@ -8,7 +8,7 @@ function bind(asThis) {
 	//this就是函数
 	const fn = this
 	var args = Array.prototype.slice.call(arguments, 1) //获取除掉asThis外后面的所有参数，相当于...args
-	
+
 	if (typeof fn !== 'function') {
 		throw new Error('bind必须调用在函数身上！') //可以是对象,因为type {} === object
 	}
