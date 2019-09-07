@@ -103,6 +103,16 @@ describe('deepClone是一个函数', () => {
 				assert(a.xxx.yyy !== b.xxx.yyy)
 				assert(a.xxx !== b.xxx)
 			})
+			it('自动跳过原型属性',() => {
+				const a = Object.create({name: 'hby'})
+				a.xxx = {yyy: {zzz: 1}}
+				const b = deepClone(a)
+				assert(a !== b)
+				assert.isFalse('name' in b)
+				assert(a.xxx.yyy.zzz === b.xxx.yyy.zzz)
+				assert(a.xxx.yyy !== b.xxx.yyy)
+				assert(a.xxx !== b.xxx)
+			})
 		})
 	})
 })
