@@ -6,6 +6,14 @@ function deepClone(source) {
 				dist[key] = deepClone(source[key])
 			}
 			return dist
+		} else if (source instanceof Function) {
+			const dist = function () {
+				return source.apply(null, arguments)
+			}
+			for (let key in source) {
+				dist[key] = deepClone(source[key])
+			}
+			return dist
 		} else {
 			const dist = {}
 			for (let key in source) {
