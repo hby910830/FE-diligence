@@ -82,12 +82,23 @@ describe('deepClone是一个函数', () => {
 				assert(a.child !== a2.child)
 			})
 			it('能够复制正则表达式',() => {
+				// const a = /hi\d+/ig
 				const a = new RegExp('hi\\d+', 'ig')
 				a.xxx = {yyy: {zzz: 1}}
 				const b = deepClone(a)
 				assert(a !== b)
 				assert(a.source === b.source)
 				assert(a.flags === b.flags)
+				assert(a.xxx.yyy.zzz === b.xxx.yyy.zzz)
+				assert(a.xxx.yyy !== b.xxx.yyy)
+				assert(a.xxx !== b.xxx)
+			})
+			it('能够复制日期',() => {
+				const a = new Date()
+				a.xxx = {yyy: {zzz: 1}}
+				const b = deepClone(a)
+				assert(a !== b)
+				assert(a.getTime() === b.getTime())
 				assert(a.xxx.yyy.zzz === b.xxx.yyy.zzz)
 				assert(a.xxx.yyy !== b.xxx.yyy)
 				assert(a.xxx !== b.xxx)
