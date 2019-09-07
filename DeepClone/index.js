@@ -1,28 +1,21 @@
 function deepClone(source) {
 	if (source instanceof Object) {
+		let dist
 		if (source instanceof Array) {
-			const dist = []
-			for (let key in source) {
-				dist[key] = deepClone(source[key])
-			}
-			return dist
+			dist = []
 		} else if (source instanceof Function) {
-			const dist = function () {
+			dist = function () {
 				return source.apply(null, arguments)
 			}
-			for (let key in source) {
+		} else {
+			dist = {}
+		}
+		for (let key in source) {
+			if (source.hasOwnProperty(key)) {
 				dist[key] = deepClone(source[key])
 			}
-			return dist
-		} else {
-			const dist = {}
-			for (let key in source) {
-				if (source.hasOwnProperty(key)) {
-					dist[key] = deepClone(source[key])
-				}
-			}
-			return dist
 		}
+		return dist
 	}
 	return source
 }
