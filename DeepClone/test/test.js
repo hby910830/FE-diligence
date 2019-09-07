@@ -1,9 +1,6 @@
 const chai = require('chai')
-const sinon = require('sinon')
-const sinonChai = require('sinon-chai')
-chai.use(sinonChai)
-
 const assert = chai.assert
+
 const deepClone = require('../index')
 
 describe('deepClone是一个函数', () => {
@@ -69,9 +66,9 @@ describe('deepClone是一个函数', () => {
 			})
 			//xit表示关掉这个测试用例
 			xit('不会爆栈', () => {
-				const a = {child:null}
+				const a = {child: null}
 				let b = a
-				for(let i=0; i < 10000; i++){
+				for (let i = 0; i < 10000; i++) {
 					b.child = {
 						child: null
 					}
@@ -81,7 +78,7 @@ describe('deepClone是一个函数', () => {
 				assert(a !== a2)
 				assert(a.child !== a2.child)
 			})
-			it('能够复制正则表达式',() => {
+			it('能够复制正则表达式', () => {
 				// const a = /hi\d+/ig
 				const a = new RegExp('hi\\d+', 'ig')
 				a.xxx = {yyy: {zzz: 1}}
@@ -93,7 +90,7 @@ describe('deepClone是一个函数', () => {
 				assert(a.xxx.yyy !== b.xxx.yyy)
 				assert(a.xxx !== b.xxx)
 			})
-			it('能够复制日期',() => {
+			it('能够复制日期', () => {
 				const a = new Date()
 				a.xxx = {yyy: {zzz: 1}}
 				const b = deepClone(a)
@@ -103,7 +100,7 @@ describe('deepClone是一个函数', () => {
 				assert(a.xxx.yyy !== b.xxx.yyy)
 				assert(a.xxx !== b.xxx)
 			})
-			it('自动跳过原型属性',() => {
+			it('自动跳过原型属性', () => {
 				const a = Object.create({name: 'hby'})
 				a.xxx = {yyy: {zzz: 1}}
 				const b = deepClone(a)
@@ -112,6 +109,68 @@ describe('deepClone是一个函数', () => {
 				assert(a.xxx.yyy.zzz === b.xxx.yyy.zzz)
 				assert(a.xxx.yyy !== b.xxx.yyy)
 				assert(a.xxx !== b.xxx)
+			})
+			it('很复杂的对象', () => {
+				const a = {
+					n: NaN,
+					n1: Infinity,
+					s: '',
+					u: undefined,
+					null: null,
+					sym: Symbol(),
+					bool: false,
+					obj: {
+						n: NaN,
+						n1: Infinity,
+						s: '',
+						u: undefined,
+						null: null,
+						sym: Symbol(),
+						bool: false,
+					},
+					array: [
+						{
+							n: NaN,
+							n1: Infinity,
+							s: '',
+							u: undefined,
+							null: null,
+							sym: Symbol(),
+							bool: false,
+						}
+					]
+				}
+				const b = deepClone(a)
+				assert(a !== b)
+
+				assert.isNaN(b.n)
+				assert(a.n1 === b.n1)
+				assert(a.s === b.s)
+				assert(a.u === b.u)
+				assert(a.null === b.null)
+				assert(a.sym === b.sym)
+				assert(a.bool === b.bool)
+
+				assert(a.obj !== b.obj)
+
+				assert.isNaN(b.obj.n)
+				assert(a.obj.n1 === b.obj.n1)
+				assert(a.obj.s === b.obj.s)
+				assert(a.obj.u === b.obj.u)
+				assert(a.obj.null === b.obj.null)
+				assert(a.obj.sym === b.obj.sym)
+				assert(a.obj.bool === b.obj.bool)
+				
+				assert(a.array !== b.array)
+				assert(a.array[0] !== b.array[0])
+
+				assert.isNaN(b.array[0].n)
+				assert(a.array[0].n1 === b.array[0].n1)
+				assert(a.array[0].s === b.array[0].s)
+				assert(a.array[0].u === b.array[0].u)
+				assert(a.array[0].null === b.array[0].null)
+				assert(a.array[0].sym === b.array[0].sym)
+				assert(a.array[0].bool === b.array[0].bool)
 			})
 		})
 	})
