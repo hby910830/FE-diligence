@@ -48,7 +48,7 @@ describe('deepClone是一个函数', () => {
 				assert.deepEqual(a, b)
 			})
 			it('能够复制函数', () => {
-				const a = function (x,y) {
+				const a = function (x, y) {
 					return x + y
 				}
 				a.xxx = {yyy: {zzz: 1}}
@@ -57,15 +57,29 @@ describe('deepClone是一个函数', () => {
 				assert(a.xxx.yyy.zzz === b.xxx.yyy.zzz)
 				assert(a.xxx.yyy !== b.xxx.yyy)
 				assert(a.xxx !== b.xxx)
-				assert(a(1,2) === b(1,2))
+				assert(a(1, 2) === b(1, 2))
 			})
-			it('环也能复制',() => {
+			it('环也能复制', () => {
 				const a = {name: '宝亿'}
 				a.self = a
 				const b = deepClone(a)
 				assert(a !== b)
 				assert(a.name === b.name)
 				assert(a.self !== b.self)
+			})
+			//xit表示关掉这个测试用例
+			xit('不会爆栈', () => {
+				const a = {child:null}
+				let b = a
+				for(let i=0; i < 10000; i++){
+					b.child = {
+						child: null
+					}
+					b = b.child
+				}
+				const a2 = deepClone(a)
+				assert(a !== a2)
+				assert(a.child !== a2.child)
 			})
 		})
 	})

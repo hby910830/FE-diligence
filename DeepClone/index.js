@@ -2,7 +2,7 @@ let cache = [] //缓存，为了解决环问题
 function deepClone(source) {
 	if (source instanceof Object) {
 		let cachedDist = findCache(source)
-		if(cachedDist){
+		if (cachedDist) {
 			return cachedDist
 		}
 		let dist
@@ -15,7 +15,7 @@ function deepClone(source) {
 		} else {
 			dist = {}
 		}
-		cache.push([source,dist])
+		cache.push([source, dist])
 		for (let key in source) {
 			if (source.hasOwnProperty(key)) {
 				dist[key] = deepClone(source[key])
@@ -26,9 +26,9 @@ function deepClone(source) {
 	return source
 }
 
-function findCache(source){
-	for(let i=0; i< cache.length;i++){
-		if(cache[i][0] === source){
+function findCache(source) {
+	for (let i = 0; i < cache.length; i++) {
+		if (cache[i][0] === source) {
 			return cache[i][1]
 		}
 	}
