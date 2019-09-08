@@ -176,13 +176,30 @@ describe('Promise', () => {
       done()
     })
   })
-  it(' onFulfilled 和 onRejected 会作为函数形式调用 (也就是说，默认 this 指向 global，严格模式 undefined', done => {
+  it('onFulfilled 和 onRejected 会作为函数形式调用 (也就是说，默认 this 指向 global，严格模式 undefined', done => {
     const promise = new Promise((resolve,reject) => {
       resolve()
     })
     promise.then(function(){
       'use strict'
       assert(this === undefined)
+      done()
+    })
+  })
+  it('在同一个 promise 实例中，then 可以链式调用多次,并且回调会以他们注册时的顺序依次执行', done => {
+    const promise = new Promise((resolve,reject) => {
+      resolve()
+    })
+    const callbacks = [sinon.fake(),sinon.fake(),sinon.fake()]
+    promise.then(callbacks[0])
+    promise.then(callbacks[1])
+    promise.then(callbacks[2])
+    setTimeout(() => {
+      assert(callbacks[0].called)
+      assert(callbacks[1].calledAfter(callbacks[0]))
+      assert(callbacks[1].called)
+      assert(callbacks[1].calledBefore(callbacks[2]))
+      assert(callbacks[2].called)
       done()
     })
   })
