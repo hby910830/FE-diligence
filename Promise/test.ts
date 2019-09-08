@@ -176,4 +176,14 @@ describe('Promise', () => {
       done()
     })
   })
+  it(' onFulfilled 和 onRejected 会作为函数形式调用 (也就是说，默认 this 指向 global，严格模式 undefined', done => {
+    const promise = new Promise((resolve,reject) => {
+      resolve()
+    })
+    promise.then(function(){
+      'use strict'
+      assert(this === undefined)
+      done()
+    })
+  })
 })

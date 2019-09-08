@@ -7,7 +7,7 @@ class Promise2 {
     setTimeout(() => {
       if (this.state !== 'pending') return
       this.state = 'fulfilled'
-      if (typeof this.succeed === 'function') this.succeed(result)
+      if (typeof this.succeed === 'function') this.succeed.call(undefined,result)
 
     })
   }
