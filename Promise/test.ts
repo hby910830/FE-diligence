@@ -121,4 +121,18 @@ describe('Promise', () => {
     })
     promise.then(succeed)
   })
+  it('如果 onFulfilled 是一个函数,它一定是在 promise 是 fulfilled 状态后调用,并且接受一个参数 value', done => {
+    const succeed = sinon.fake()
+    const promise = new Promise((resolve,reject) => {
+      assert.isFalse(succeed.called)
+      resolve(233)
+      setTimeout(() => {
+        assert(promise.state === 'fulfilled')
+        assert.isTrue(succeed.called)
+        assert(succeed.calledWith(233))
+        done()
+      })
+    })
+    promise.then(succeed)
+  })
 })
