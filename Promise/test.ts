@@ -1,4 +1,7 @@
 import * as chai from 'chai'
+import * as sinon from 'sinon'
+import * as sinonChai from 'sinon-chai'
+chai.use(sinonChai)
 
 const assert = chai.assert
 import Promise from "./promise";
@@ -30,36 +33,51 @@ describe('Promise', () => {
     assert.isFunction(promise.then)
   })
   it('new Promise(fn)中的fn立即执行', () => {
-    let called = false
-    new Promise(() => {
-      called = true
-    })
-    assert.isTrue(called)
+    // let called = false
+    // new Promise(() => {
+    //   called = true
+    // })
+    // assert.isTrue(called)
+    let fn = sinon.fake() //用sinon来测试函数是否被调用
+    new Promise(fn)
+    assert.isTrue(fn.called)
   })
-  it('new Promise(fn)中的fn执行的时候必须接受resolve/reject两个函数', () => {
-    let called = false
+  it('new Promise(fn)中的fn执行的时候必须接受resolve/reject两个函数', done => {
     new Promise((resolve, reject) => {
-      called = true
       assert.isFunction(resolve)
       assert.isFunction(reject)
+      done()
     })
-    assert.isTrue(called)
   })
   it('promise.then(success)中的success会在resolve被调用的时候执行', done => {
-    let called = false
+    // let called = false
+    // const promise = new Promise((resolve, reject) => {
+    //   //该函数没有执行
+    //   assert.isFalse(called)
+    //   resolve.call()
+    //   setTimeout(() => {
+    //     //该函数执行了
+    //     assert.isTrue(called)
+    //     done()//done是mocha专门用来测试函数是否执行了
+    //   })
+    // })
+    // //@ts-ignore
+    // promise.then(() => {
+    //   called = true
+    // })
+
+    const succeed = sinon.fake()
     const promise = new Promise((resolve, reject) => {
       //该函数没有执行
-      assert.isFalse(called)
+      assert.isFalse(succeed.called)
       resolve.call()
       setTimeout(() => {
         //该函数执行了
-        assert.isTrue(called)
-        done()//done是mocha专门用来测试异步的
+        assert.isTrue(succeed.called)
+        done()//done是mocha专门用来测试函数是否执行了
       })
     })
     //@ts-ignore
-    promise.then(() => {
-      called = true
-    })
+    promise.then(succeed)
   })
 })
