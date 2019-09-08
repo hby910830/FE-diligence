@@ -102,4 +102,10 @@ describe('Promise', () => {
     })
     promise.then(false, null)
   })
+  it('如果 onRejected 不是函数，它会被忽略',() =>{
+    const promise = new Promise((resolve,reject) => {
+      reject()
+    })
+    promise.then(null, false)
+  })
 })
