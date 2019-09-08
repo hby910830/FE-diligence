@@ -4,7 +4,8 @@ const assert = chai.assert
 
 describe('Chai的使用',() =>{
   it('可以测试相等',() =>{
-    assert(1===1)
+    //@ts-ignore
+    assert(1===2)
   })
 })
 // describe('Promise',() => {
