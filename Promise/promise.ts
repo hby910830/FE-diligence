@@ -2,17 +2,20 @@ class Promise2 {
   succeed = null
   fail = null
   state = 'pending'
+
   resolve(result) {
     setTimeout(() => {
-      this.state = 'fulfilled'
-      if(typeof this.succeed === 'function') this.succeed(result)
+      if (this.state === 'pending') {
+        this.state = 'fulfilled'
+        if (typeof this.succeed === 'function') this.succeed(result)
+      }
     })
   }
 
   reject(reason) {
     setTimeout(() => {
       this.state = 'rejected'
-      if(typeof this.fail === 'function') this.fail(reason)
+      if (typeof this.fail === 'function') this.fail(reason)
     })
   }
 
@@ -24,10 +27,10 @@ class Promise2 {
   }
 
   then(succeed?, fail?) { //succeed,fail都是可选参数
-    if(typeof succeed === 'function'){
+    if (typeof succeed === 'function') {
       this.succeed = succeed
     }
-    if(typeof fail === 'function'){
+    if (typeof fail === 'function') {
       this.fail = fail
     }
   }

@@ -135,4 +135,19 @@ describe('Promise', () => {
     })
     promise.then(succeed)
   })
+  it('如果 onFulfilled 是一个函数,它最多被调用一次', done => {
+    const succeed = sinon.fake()
+    const promise = new Promise((resolve,reject) => {
+      assert.isFalse(succeed.called)
+      resolve(233)
+      resolve(23333)
+      setTimeout(() => {
+        assert(promise.state === 'fulfilled')
+        assert.isTrue(succeed.calledOnce)
+        assert(succeed.calledWith(233))
+        done()
+      })
+    })
+    promise.then(succeed)
+  })
 })
