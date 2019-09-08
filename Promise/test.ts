@@ -35,4 +35,13 @@ describe('Promise', () => {
     })
     assert.isTrue(called)
   })
+  it('new Promise(fn)中的fn执行的时候必须接受resolve/reject两个函数',() =>{
+    let called = false
+    new Promise((resolve,reject) => {
+      called = true
+      assert.isFunction(resolve)
+      assert.isFunction(reject)
+    })
+    assert.isTrue(called)
+  })
 })
