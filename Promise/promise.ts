@@ -1,27 +1,29 @@
 class Promise2 {
   succeed = null
-  failed = null
+  fail = null
+
+  resolve() {
+    setTimeout(() => {
+      this.succeed()
+    })
+  }
+
+  reject() {
+    setTimeout(() => {
+      this.fail()
+    })
+  }
 
   constructor(fn) {
     if (typeof fn !== 'function') {
       throw new Error('Promise必须接受一个函数')
     }
-    fn.call(undefined,
-      () => {
-        setTimeout(() => {
-          this.succeed()
-        })
-      },
-      () => {
-        setTimeout(() => {
-          this.failed()
-        })
-      })
+    fn.call(undefined, this.resolve.bind(this), this.reject.bind(this))
   }
 
-  then(succeed, failed) {
+  then(succeed, fail) {
     this.succeed = succeed
-    this.failed = failed
+    this.fail = fail
   }
 }
 
