@@ -96,4 +96,10 @@ describe('Promise', () => {
     //@ts-ignore
     promise.then(null, fail)
   })
+  it('如果 onFulfilled 不是函数，它会被忽略',() =>{
+    const promise = new Promise((resolve,reject) => {
+      resolve()
+    })
+    promise.then(false, null)
+  })
 })
