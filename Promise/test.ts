@@ -1,6 +1,7 @@
 import * as chai from 'chai'
 import * as sinon from 'sinon'
 import * as sinonChai from 'sinon-chai'
+
 chai.use(sinonChai)
 
 const assert = chai.assert
@@ -79,5 +80,20 @@ describe('Promise', () => {
     })
     //@ts-ignore
     promise.then(succeed)
+  })
+  it('promise.then(null,fail)中的fail会在reject被调用的时候执行', done => {
+    const fail = sinon.fake()
+    const promise = new Promise((resolve, reject) => {
+      //该函数没有执行
+      assert.isFalse(fail.called)
+      reject.call()
+      setTimeout(() => {
+        //该函数执行了
+        assert.isTrue(fail.called)
+        done()//done是mocha专门用来测试函数是否执行了
+      })
+    })
+    //@ts-ignore
+    promise.then(null, fail)
   })
 })
