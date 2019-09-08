@@ -3,6 +3,7 @@ class Promise2{
     if(typeof fn !== 'function') {
       throw new Error('Promise必须接受一个函数')
     }
+    fn.call()
   }
   then(){
   }

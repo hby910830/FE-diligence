@@ -28,4 +28,11 @@ describe('Promise', () => {
     const promise = new Promise(() => {})
     assert.isFunction(promise.then)
   })
+  it('new Promise(fn)中的fn立即执行',() =>{
+    let called = false
+    new Promise(() => {
+      called = true
+    })
+    assert.isTrue(called)
+  })
 })
