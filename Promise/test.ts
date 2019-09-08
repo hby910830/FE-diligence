@@ -203,4 +203,11 @@ describe('Promise', () => {
       done()
     })
   })
+  it('then 方法一定返回一个 promise', () => {
+    const promise = new Promise(resolve => {
+      resolve()
+    })
+    const promise2 = promise.then(() => {}, () => {})
+    assert(promise2 instanceof Promise)
+  })
 })
