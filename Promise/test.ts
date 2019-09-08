@@ -166,7 +166,7 @@ describe('Promise', () => {
   })
   it('只有在执行完我的代码之后，才能调用then里面的succeed(onFulfilled)或fail(onRejected)俩回调函数', done => {
     const succeed = sinon.fake()
-    const promise = new Promise((resolve,reject) => {
+    const promise = new Promise((resolve, reject) => {
       resolve()
     })
     promise.then(succeed)
@@ -177,20 +177,20 @@ describe('Promise', () => {
     })
   })
   it('onFulfilled 和 onRejected 会作为函数形式调用 (也就是说，默认 this 指向 global，严格模式 undefined', done => {
-    const promise = new Promise((resolve,reject) => {
+    const promise = new Promise((resolve, reject) => {
       resolve()
     })
-    promise.then(function(){
+    promise.then(function () {
       'use strict'
       assert(this === undefined)
       done()
     })
   })
   it('在同一个 promise 实例中，then 可以链式调用多次,并且回调会以他们注册时的顺序依次执行', done => {
-    const promise = new Promise((resolve,reject) => {
+    const promise = new Promise((resolve, reject) => {
       resolve()
     })
-    const callbacks = [sinon.fake(),sinon.fake(),sinon.fake()]
+    const callbacks = [sinon.fake(), sinon.fake(), sinon.fake()]
     promise.then(callbacks[0])
     promise.then(callbacks[1])
     promise.then(callbacks[2])

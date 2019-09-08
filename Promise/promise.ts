@@ -4,17 +4,19 @@ class Promise2 {
 
   resolve(result) {
     setTimeout(() => {
-        if (this.state !== 'pending') return
-      this.callbacks.forEach(handle =>{
+      if (this.state !== 'pending') return
+      //遍历callbacks,调用所以的handle[0]
+      this.callbacks.forEach(handle => {
         this.state = 'fulfilled'
-        if (typeof handle[0] === 'function') handle[0].call(undefined,result)
+        if (typeof handle[0] === 'function') handle[0].call(undefined, result)
       })
     })
   }
 
   reject(reason) {
     setTimeout(() => {
-      if(this.state !== 'pending') return
+      if (this.state !== 'pending') return
+      //遍历callbacks,调用所以的handle[1]
       this.callbacks.forEach(handle => {
         this.state = 'rejected'
         if (typeof handle[1] === 'function') handle[1].call(undefined, reason)
