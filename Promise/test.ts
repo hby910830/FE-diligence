@@ -1,18 +1,14 @@
 import * as chai from 'chai'
 
 const assert = chai.assert
+import Promise from "./promise";
 
-describe('Chai的使用',() =>{
-  it('可以测试相等',() =>{
-    //@ts-ignore
-    assert(1===2)
+describe('Promise',() => {
+  it('是一个类',() => {
+    assert(typeof Promise === 'function')
+    assert(typeof Promise.prototype === 'object')
   })
+  // it('拥有对象方法then',() => {
+  //
+  // })
 })
-// describe('Promise',() => {
-//   it('是一个类',() => {
-//
-//   })
-//   it('拥有对象方法then',() => {
-//
-//   })
-// })
