@@ -5,15 +5,16 @@ class Promise2 {
 
   resolve(result) {
     setTimeout(() => {
-      if (this.state === 'pending') {
-        this.state = 'fulfilled'
-        if (typeof this.succeed === 'function') this.succeed(result)
-      }
+      if (this.state !== 'pending') return
+      this.state = 'fulfilled'
+      if (typeof this.succeed === 'function') this.succeed(result)
+
     })
   }
 
   reject(reason) {
     setTimeout(() => {
+      if(this.state !== 'pending') return
       this.state = 'rejected'
       if (typeof this.fail === 'function') this.fail(reason)
     })
