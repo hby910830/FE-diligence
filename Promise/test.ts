@@ -96,16 +96,29 @@ describe('Promise', () => {
     //@ts-ignore
     promise.then(null, fail)
   })
-  it('如果 onFulfilled 不是函数，它会被忽略',() =>{
-    const promise = new Promise((resolve,reject) => {
+  it('如果 onFulfilled 不是函数，它会被忽略', () => {
+    const promise = new Promise((resolve, reject) => {
       resolve()
     })
     promise.then(false, null)
   })
-  it('如果 onRejected 不是函数，它会被忽略',() =>{
-    const promise = new Promise((resolve,reject) => {
+  it('如果 onRejected 不是函数，它会被忽略', () => {
+    const promise = new Promise((resolve, reject) => {
       reject()
     })
     promise.then(null, false)
+  })
+  it('如果 onFulfilled 是一个函数,它一定是在 promise 是 fulfilled 状态后调用', done => {
+    const succeed = sinon.fake()
+    const promise = new Promise((resolve,reject) => {
+      assert.isFalse(succeed.called)
+      resolve()
+      setTimeout(() => {
+        assert(promise.state === 'fulfilled')
+        assert.isTrue(succeed.called)
+        done()
+      })
+    })
+    promise.then(succeed)
   })
 })
