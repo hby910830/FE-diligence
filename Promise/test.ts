@@ -10,7 +10,18 @@ describe('Promise',() => {
     assert.isFunction(Promise)
     assert.isObject(Promise.prototype)
   })
-  // it('拥有对象方法then',() => {
-  //
-  // })
+  it('new Promise必须接受一个函数',() => {
+    assert.throw(() => {
+      //@ts-ignore
+      new Promise()
+    })
+    assert.throw(() => {
+      //@ts-ignore
+      new Promise(1)
+    })
+    assert.throw(() => {
+      //@ts-ignore
+      new Promise(false)
+    })
+  })
 })
