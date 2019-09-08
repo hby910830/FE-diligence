@@ -4,6 +4,8 @@ class Promise2{
       throw new Error('Promise必须接受一个函数')
     }
   }
+  then(){
+  }
 }
 
 export default Promise2
