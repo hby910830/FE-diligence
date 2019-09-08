@@ -47,7 +47,7 @@ describe('Promise', () => {
     new Promise((resolve, reject) => {
       assert.isFunction(resolve)
       assert.isFunction(reject)
-      done()
+      done() //done是mocha专门用来测试异步函数是否执行完了
     })
   })
   it('promise.then(success)中的success会在resolve被调用的时候执行', done => {
@@ -59,7 +59,7 @@ describe('Promise', () => {
     //   setTimeout(() => {
     //     //该函数执行了
     //     assert.isTrue(called)
-    //     done()//done是mocha专门用来测试函数是否执行了
+    //     done()//done是mocha专门用来测试异步函数是否执行完了
     //   })
     // })
     // //@ts-ignore
@@ -75,7 +75,7 @@ describe('Promise', () => {
       setTimeout(() => {
         //该函数执行了
         assert.isTrue(succeed.called)
-        done()//done是mocha专门用来测试函数是否执行了
+        done()//done是mocha专门用来测试异步函数是否执行完了
       })
     })
     //@ts-ignore
@@ -90,7 +90,7 @@ describe('Promise', () => {
       setTimeout(() => {
         //该函数执行了
         assert.isTrue(fail.called)
-        done()//done是mocha专门用来测试函数是否执行了
+        done()//done是mocha专门用来测试异步函数是否执行完了
       })
     })
     //@ts-ignore
@@ -116,7 +116,7 @@ describe('Promise', () => {
       setTimeout(() => {
         assert(promise.state === 'fulfilled')
         assert.isTrue(succeed.called)
-        done()
+        done()//done是mocha专门用来测试异步函数是否执行完了
       })
     })
     promise.then(succeed)
@@ -130,7 +130,7 @@ describe('Promise', () => {
         assert(promise.state === 'fulfilled')
         assert.isTrue(succeed.called)
         assert(succeed.calledWith(233))
-        done()
+        done()//done是mocha专门用来测试异步函数是否执行完了
       })
     })
     promise.then(succeed)
@@ -145,7 +145,7 @@ describe('Promise', () => {
         assert(promise.state === 'fulfilled')
         assert.isTrue(succeed.calledOnce)
         assert(succeed.calledWith(233))
-        done()
+        done()//done是mocha专门用来测试异步函数是否执行完了
       })
     })
     promise.then(succeed)
@@ -159,9 +159,21 @@ describe('Promise', () => {
       setTimeout(() => {
         assert(promise.state === 'rejected')
         assert.isTrue(fail.calledWith(123))
-        done()
+        done()//done是mocha专门用来测试异步函数是否执行完了
       })
     })
     promise.then(null, fail)
+  })
+  it('只有在执行完我的代码之后，才能调用then里面的succeed(onFulfilled)或fail(onRejected)俩回调函数', done => {
+    const succeed = sinon.fake()
+    const promise = new Promise((resolve,reject) => {
+      resolve()
+    })
+    promise.then(succeed)
+    assert.isFalse(succeed.called)
+    setTimeout(() => {
+      assert.isTrue(succeed.called)
+      done()
+    })
   })
 })
