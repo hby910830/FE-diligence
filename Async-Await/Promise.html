@@ -33,6 +33,9 @@
 		}))
 	}
 	摇色子().then(res => console.log(res)) //Uncaught (in promise) 失败了
+
+  /*Promise.resolve(reason)可以制造一个失败*/
+  Promise.reject('我错了').then(null, reason => console.log(reason))  //我错了
 </script>
 </body>
 </html>
