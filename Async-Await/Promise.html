@@ -14,15 +14,25 @@
 	// 	})
 	// }
 	// 摇塞子().then(result => console.log(result))
+
+
+	// const 摇色子 = () => {
+	// 	return new Promise((resolve, reject) => {
+	// 		resolve(4)
+	// 	})
+	// }
+	// //1 4 2
+	// setTimeout(() => console.log(2),0)
+	// 摇色子().then(n => console.log(n))
+	// console.log(1);
+
+	/*Promise.resolve(result)可以制造一个成功（或失败）*/
 	const 摇色子 = () => {
-		return new Promise((resolve, reject) => {
-			resolve(4)
-		})
+		return Promise.resolve(new Promise((resolve, reject) => {
+			reject('失败了')
+		}))
 	}
-	//1 4 2
-	setTimeout(() => console.log(2),0)
-	摇色子().then(n => console.log(n))
-	console.log(1);
+	摇色子().then(res => console.log(res)) //Uncaught (in promise) 失败了
 </script>
 </body>
 </html>
