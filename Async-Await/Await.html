@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Await-Async</title>
+</head>
+<body>
+<script>
+  const 摇色子 = () => {
+  	return new Promise((resolve,reject) => {
+  		setTimeout(() => {
+  			resolve(Math.floor(Math.random()*6 +1))
+      },3000)
+    })
+  }
+  const fn = async ()=> {
+  	let result = await 摇色子()
+		console.log(result);
+	}
+	fn()
+</script>
+</body>
+</html>
