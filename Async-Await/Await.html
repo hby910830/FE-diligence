@@ -49,6 +49,23 @@
 		}
 	}
 	fn1()
+
+
+  /*可以用await+then(null,onRejected)来优雅的进行错误处理，摒弃try-catch*/
+	const ajax1 = () => {
+		return new Promise((resolve, reject) => {
+			resolve({data: {name: '韩宝亿'}})
+			// reject({status: 403})
+		})
+	}
+	const error = e => {
+		console.log(e); //{status: 403}
+	}
+	const fn2 = async () => {
+		const result = await ajax1().then(null, error) //result接受成功返回值，error处理错误
+		console.log(result);  //data: {name: "韩宝亿"}
+	}
+	fn2()
 </script>
 </body>
 </html>
