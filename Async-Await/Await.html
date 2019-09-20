@@ -6,18 +6,31 @@
 </head>
 <body>
 <script>
-  const 摇色子 = () => {
-  	return new Promise((resolve,reject) => {
-  		setTimeout(() => {
-  			resolve(Math.floor(Math.random()*6 +1))
-      },3000)
-    })
+  // const 摇色子 = () => {
+  // 	return new Promise((resolve,reject) => {
+  // 		setTimeout(() => {
+  // 			resolve(Math.floor(Math.random()*6 +1))
+  //     },3000)
+  //   })
+  // }
+  // const fn = async ()=> {
+  // 	let result = await 摇色子()
+	// 	console.log(result);
+	// }
+	// fn()
+
+  async function 摇色子(){
+  	throw new Error('色子坏了')
   }
-  const fn = async ()=> {
-  	let result = await 摇色子()
-		console.log(result);
-	}
-	fn()
+  async function fn(){
+  	try {
+      let result = await 摇色子()
+			console.log(result);
+		}catch (e) {
+			console.log(e);
+		}
+  }
+  fn() //Error: 色子坏了
 </script>
 </body>
 </html>
