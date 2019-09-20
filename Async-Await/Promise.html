@@ -6,41 +6,41 @@
 </head>
 <body>
 <script>
-	// const 摇塞子 = () => {
-	// 	return new Promise((resolve, reject) => {
-	// 		setTimeout(() => {
-	// 			resolve(parseInt(Math.random() * 6) + 1)
-	// 		}, 1000)
-	// 	})
-	// }
-	// 摇塞子().then(result => console.log(result))
+	const 摇塞子 = () => {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve(parseInt(Math.random() * 6) + 1)
+			}, 1000)
+		})
+	}
+	摇塞子().then(result => console.log(result))
 
 
-	// const 摇色子 = () => {
-	// 	return new Promise((resolve, reject) => {
-	// 		resolve(4)
-	// 	})
-	// }
-	// //1 4 2
-	// setTimeout(() => console.log(2),0)
-	// 摇色子().then(n => console.log(n))
-	// console.log(1);
+	const 摇色子 = () => {
+		return new Promise((resolve, reject) => {
+			resolve(4)
+		})
+	}
+	//1 4 2
+	setTimeout(() => console.log(2),0)
+	摇色子().then(n => console.log(n))
+	console.log(1);
 
 
 	/*Promise.resolve(result)可以制造一个成功（或失败）*/
-	// const 摇色子 = () => {
-	// 	return Promise.resolve(new Promise((resolve, reject) => {
-	// 		reject('失败了')
-	// 	}))
-	// }
-	// 摇色子().then(res => console.log(res)) //Uncaught (in promise) 失败了
+	const 摇色子 = () => {
+		return Promise.resolve(new Promise((resolve, reject) => {
+			reject('失败了')
+		}))
+	}
+	摇色子().then(res => console.log(res)) //Uncaught (in promise) 失败了
 
 
 	/*Promise.resolve(reason)可以制造一个失败*/
-	// Promise.reject('我错了').then(null, reason => console.log(reason))  //我错了
+	Promise.reject('我错了').then(null, reason => console.log(reason))  //我错了
 
 
-  /*Promise.all(数组)用来等待全部成功，或者有一个失败*/
+	/*Promise.all(数组)用来等待全部成功，或者有一个失败*/
 	Promise.all([Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)])
 		.then(values => console.log(values)) // [1, 2, 3]
 
@@ -51,32 +51,50 @@
 		.then(values => console.log(values)) //  [{status: "rejected", reason: 1},{status: "rejected", reason: 2},{status: "fulfilled", value: 3}]
 
 
-  /*用自己封装的Promise.all来代替兼容性差的Promise.allSettled*/
-  const task1 = () =>{
-		return new Promise((resolve,reject) => {
-			setTimeout(() => reject('第一扇门关了'),3000)
-    })
-  }
-	const task2 = () =>{
-		return new Promise((resolve,reject) => {
-			setTimeout(() => reject('第二扇门关了'),4000)
+	/*用自己封装的Promise.all来代替兼容性差的Promise.allSettled*/
+	const task1 = () => {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => reject('第一扇门关了'), 3000)
 		})
 	}
-	const task3 = () =>{
-		return new Promise((resolve,reject) => {
-			setTimeout(() => resolve('第三扇门开了'),5000)
+	const task2 = () => {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => reject('第二扇门关了'), 4000)
+		})
+	}
+	const task3 = () => {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => resolve('第三扇门开了'), 5000)
 		})
 	}
 	Promise.all([
 		task1().then(values => console.log(values), reason => console.log(reason)),
 		task2().then(values => console.log(values), reason => console.log(reason)),
 		task3().then(values => console.log(values), reason => console.log(reason))
-  ]).then(result => console.log(result)) //第一扇门关了 第二扇门关了 第三扇门开了
+	]).then(result => console.log(result)) //第一扇门关了 第二扇门关了 第三扇门开了
 	Promise.all([
 		task1().then(() => ({status: 'ok'}), () => ({status: 'not ok'})),
 		task2().then(() => ({status: 'ok'}), () => ({status: 'not ok'})),
 		task3().then(() => ({status: 'ok'}), () => ({status: 'not ok'}))
 	]).then(result => console.log(result)) // [{status: "not ok"},{status: "not ok"}, {status: "ok"}]
+
+
+  //优化上面的代码
+	let x = promise => promise.then(value => ({status: 'ok', value}), reason => ({status: 'not ok', reason}))
+	Promise.all([x(task1()), x(task2()), x(task3())]).then(result => console.log(result)) // [{status: "not ok", reason: "第一扇门关了"},{status: "not ok", reason: "第二扇门关了"},{status: "ok", value: "第三扇门开了"}]
+	//继续优化上面的代码
+	let allSettled = promiseList => promiseList.map(
+		promise => promise.then(value => ({status: 'ok', value}), reason => ({status: 'not ok', reason}))
+  )
+	Promise.all(allSettled([task1(), task2(), task3()])).then(result => console.log(result)) // [{status: "not ok", reason: "第一扇门关了"},{status: "not ok", reason: "第二扇门关了"},{status: "ok", value: "第三扇门开了"}]
+	//继续优化上面的代码,封装成Promise.allSettle2()
+	let fn = promiseList => promiseList.map(
+		promise => promise.then(value => ({status: 'ok', value}), reason => ({status: 'not ok', reason}))
+	)
+  Promise.allSettled2 =  promiseList => {
+    return Promise.all(fn(promiseList))
+	}
+	Promise.allSettled2([task1(), task2(), task3()]).then(result => console.log(result)) // [{status: "not ok", reason: "第一扇门关了"},{status: "not ok", reason: "第二扇门关了"},{status: "ok", value: "第三扇门开了"}]
 </script>
 </body>
 </html>
