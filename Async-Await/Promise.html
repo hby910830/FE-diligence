@@ -26,6 +26,7 @@
 	// 摇色子().then(n => console.log(n))
 	// console.log(1);
 
+
 	/*Promise.resolve(result)可以制造一个成功（或失败）*/
 	// const 摇色子 = () => {
 	// 	return Promise.resolve(new Promise((resolve, reject) => {
@@ -34,16 +35,48 @@
 	// }
 	// 摇色子().then(res => console.log(res)) //Uncaught (in promise) 失败了
 
+
 	/*Promise.resolve(reason)可以制造一个失败*/
 	// Promise.reject('我错了').then(null, reason => console.log(reason))  //我错了
 
 
+  /*Promise.all(数组)用来等待全部成功，或者有一个失败*/
 	Promise.all([Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)])
 		.then(values => console.log(values)) // [1, 2, 3]
+
 	Promise.all([Promise.reject(1), Promise.resolve(2), Promise.resolve(3)])  // Promise.all()只要有一个失败，就只会返回第一个失败的结果
 		.then(values => console.log(values), reason => console.log(reason)) // 1
+
 	Promise.allSettled([Promise.reject(1), Promise.reject(2), Promise.resolve(3)]) // Promise.allSettled()会返回所有成功和失败的结果，但是兼容性太差，在stage-4阶段
 		.then(values => console.log(values)) //  [{status: "rejected", reason: 1},{status: "rejected", reason: 2},{status: "fulfilled", value: 3}]
+
+
+  /*用自己封装的Promise.all来代替兼容性差的Promise.allSettled*/
+  const task1 = () =>{
+		return new Promise((resolve,reject) => {
+			setTimeout(() => reject('第一扇门关了'),3000)
+    })
+  }
+	const task2 = () =>{
+		return new Promise((resolve,reject) => {
+			setTimeout(() => reject('第二扇门关了'),4000)
+		})
+	}
+	const task3 = () =>{
+		return new Promise((resolve,reject) => {
+			setTimeout(() => resolve('第三扇门开了'),5000)
+		})
+	}
+	Promise.all([
+		task1().then(values => console.log(values), reason => console.log(reason)),
+		task2().then(values => console.log(values), reason => console.log(reason)),
+		task3().then(values => console.log(values), reason => console.log(reason))
+  ]).then(result => console.log(result)) //第一扇门关了 第二扇门关了 第三扇门开了
+	Promise.all([
+		task1().then(() => ({status: 'ok'}), () => ({status: 'not ok'})),
+		task2().then(() => ({status: 'ok'}), () => ({status: 'not ok'})),
+		task3().then(() => ({status: 'ok'}), () => ({status: 'not ok'}))
+	]).then(result => console.log(result)) // [{status: "not ok"},{status: "not ok"}, {status: "ok"}]
 </script>
 </body>
 </html>
