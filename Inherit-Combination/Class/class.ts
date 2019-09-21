@@ -58,3 +58,23 @@ console.log(person2);
 
 console.log(person1.mySay === person2.mySay); //false
 console.log(person1.sayHi === person2.sayHi); //true
+
+class Person3{
+  name:string
+}
+const p1 = new Person3()
+console.log(p1); //Person3 {name: undefined}
+
+class Person4{
+  //@ts-ignore
+  static name:string
+}
+const p2 = new Person4()
+console.log(p2);
+//Person4 {
+//  __proto__: {
+//    constructor: class Person4{
+//      name: undefined
+//    }
+//  }
+// }
