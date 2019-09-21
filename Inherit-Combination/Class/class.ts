@@ -26,6 +26,10 @@ class Person {
 
   //public是公有属性，可以对this.name = name,this.age = age进行简化处理
   constructor(public name: String, public age: Number) {
+    /*tsconfig.json里添加了 "noImplicitAny",
+     *为 false 时，如果编译器无法根据变量的使用来判断类型时，将用 any 类型代替。
+     *为 true 时，进行强类型检查，会报错
+    */
   }
 }
 
