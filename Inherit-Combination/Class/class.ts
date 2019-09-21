@@ -20,10 +20,12 @@
 
 
 class Person {
-  sayHi(): void {
+  sayHi(): void { //共用方法
     console.log(this.name)
   }
-
+  mySay = () => { //自用方法
+    console.log(`Hi,${this.name}`)
+  }
   //public是公有属性，可以对this.name = name,this.age = age进行简化处理
   constructor(public name: String, public age: Number) {
     /*tsconfig.json里添加了 "noImplicitAny",
@@ -34,8 +36,25 @@ class Person {
 }
 
 const person1 = new Person('hby', 18)
-console.log(person1.age); //18
+console.log(person1);
+//Person {
+//  name: 'hby',
+//  age: 18,
+//  mySay: [Function],
+//  __proto__: {
+//    sayHi: [Function]
+//  }
+// }
 const person2 = new Person('韩宝亿', 28)
-console.log(person2.age); //28
-console.log(person1.sayHi()); //hby
-console.log(person2.sayHi()); //韩宝亿
+console.log(person2);
+//Person {
+//  name: '韩宝亿',
+//  age: 28,
+//  mySay: [Function],
+//  __proto__: {
+//    sayHi: [Function]
+//  }
+// }
+
+console.log(person1.mySay === person2.mySay); //false
+console.log(person1.sayHi === person2.sayHi); //true
