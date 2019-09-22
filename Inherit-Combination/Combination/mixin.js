@@ -47,3 +47,15 @@ Person {
 		__proto__: Object
 }
  */
+
+/*如果需要更多的功能*/
+class Fly{}
+class Killer{}
+class Person1{
+	name
+	sayHi(){}
+}
+const p2 = new Person1()
+
+mixin(p2, new Fly()) 	//可以飞
+mixin(p2, new Killer())	//可以杀人
