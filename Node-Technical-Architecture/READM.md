@@ -23,4 +23,4 @@ C/C++实现的c-ares、http-parser、OpenSSL、zlib等库
 ```
 
 ##Node.js技术架构
-(https://upload-images.jianshu.io/upload_images/1181204-05638c3e0131fabc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://upload-images.jianshu.io/upload_images/1181204-05638c3e0131fabc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
