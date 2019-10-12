@@ -10,13 +10,12 @@ program
 	.description('add a task')
 	.action((...args) => {
 		const words = args.slice(0, args.length - 1).join(' ')
-		console.log(api.add(words));
+		api.add(words)
 	});
 program
 	.command('clear')
 	.description('clear all tasks')
-	.action((...args) => {
-		const words = args.slice(0, args.length - 1).join(' ')
-		console.log(words);
+	.action(() => {
+		api.clear()
 	});
 program.parse(process.argv)
