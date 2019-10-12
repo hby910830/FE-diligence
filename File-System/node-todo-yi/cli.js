@@ -10,7 +10,7 @@ program
 	.description('add a task')
 	.action((...args) => {
 		const words = args.slice(0, args.length - 1).join(' ')
-		console.log(api.add());
+		console.log(api.add(words));
 	});
 program
 	.command('clear')
