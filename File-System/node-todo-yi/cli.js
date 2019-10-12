@@ -1,7 +1,11 @@
+#!/usr/bin/env node
 const program = require('commander');
 const api = require('./index')
+const pkg = require('./package.json')
 // Command implemented using action handler (description is supplied separately to `.command`)
 // Returns new command for configuring.
+program
+	.version(pkg.version)
 program
 	.command('add')
 	.description('add a task')

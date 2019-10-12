@@ -1,10 +1,19 @@
 {
   "name": "node-todo-yi",
-  "version": "0.0.1",
-  "main": "cli.js",
+  "version": "0.0.2",
+  "bin": {
+    "t": "cli.js"
+  },
+  "files": [
+    "*.js"
+  ],
+  "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "commander": "^3.0.2",
-    "inquirer": "^7.0.0"
+    "global": "^4.4.0",
+    "inquirer": "^7.0.0",
+    "node-todo-yi": "^0.0.1",
+    "nrm": "^1.2.1"
   }
 }
