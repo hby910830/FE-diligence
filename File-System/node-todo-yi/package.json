@@ -1,7 +1,7 @@
 {
   "name": "node-todo-yi",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "cli.js",
   "license": "MIT",
   "dependencies": {
     "commander": "^3.0.2"

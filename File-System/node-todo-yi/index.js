@@ -1,21 +1,6 @@
-const program = require('commander');
-// Command implemented using action handler (description is supplied separately to `.command`)
-// Returns new command for configuring.
-program
-	.option('-x, --xxx', 'what is x')
-	.option('-y, --yyy', 'what is y')
-program
-	.command('add')
-	.description('add a task')
-	.action((...args) => {
-		const words = args.slice(0, args.length - 1).join(' ')
-		console.log(words);
-	});
-program
-	.command('clear')
-	.description('clear all tasks')
-	.action((...args) => {
-		const words = args.slice(0, args.length - 1).join(' ')
-		console.log(words);
-	});
-program.parse(process.argv)
+const homedir = require('os').homedir(); //系统home目录
+const home = process.env.HOME;	//环境变量home目录
+module.exports.add = () => {
+	console.log(home);
+	console.log(homedir)
+}
