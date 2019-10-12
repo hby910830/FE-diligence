@@ -5,10 +5,17 @@ program
 	.option('-x, --xxx', 'what is x')
 	.option('-y, --yyy', 'what is y')
 program
-	.command('add <taskName>')
+	.command('add')
 	.description('add a task')
-	.action((task) => {
-		console.log(task);
+	.action((...args) => {
+		const words = args.slice(0, args.length - 1).join(' ')
+		console.log(words);
 	});
-
+program
+	.command('clear')
+	.description('clear all tasks')
+	.action((...args) => {
+		const words = args.slice(0, args.length - 1).join(' ')
+		console.log(words);
+	});
 program.parse(process.argv)
