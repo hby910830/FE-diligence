@@ -12,7 +12,6 @@
   "dependencies": {
     "commander": "^3.0.2",
     "global": "^4.4.0",
-    "inquirer": "^7.0.0",
-    "node-todo-yi": "^0.0.1"
+    "inquirer": "^7.0.0"
   }
 }
