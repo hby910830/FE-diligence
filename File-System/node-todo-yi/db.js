@@ -3,6 +3,7 @@ const home = process.env.HOME || homedir;	//环境变量home目录
 const fs = require('fs')
 const path = require('path')
 const dbPath = path.join(home, '.node-todo')
+console.log(dbPath)
 const db = {
 	read(path = dbPath) {
 		return new Promise((resolve, reject) => {

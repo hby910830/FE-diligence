@@ -13,5 +13,8 @@
     "commander": "^3.0.2",
     "global": "^4.4.0",
     "inquirer": "^7.0.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }
