@@ -4,6 +4,9 @@
   "bin": {
     "t": "cli.js"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "files": [
     "*.js"
   ],
