@@ -1,6 +1,6 @@
 {
   "name": "node-todo-yi",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "bin": {
     "t": "cli.js"
   },
