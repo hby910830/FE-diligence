@@ -1,7 +1,9 @@
 const fs = jest.genMockFromModule('fs') //jest提供的mock fs
 const _fs = jest.requireActual('fs')	//真实的fs
+
 Object.assign(fs, _fs)
-const readMocks = []
+
+let readMocks = []
 fs.setReadFileMock = (path, error, data) => {
 	readMocks[path] = [error, data]
 }
@@ -15,15 +17,22 @@ fs.readFile = (path, options, callback) => {
 		_fs.readFile(path, options, callback)
 	}
 }
-const writeMocks = {}
+
+
+let writeMocks = {}
 fs.setWriteFileMock = (path, fn) => {
 	writeMocks[path] = fn
 }
 fs.writeFile = (path, data, options, callback) => {
 	if (path in writeMocks) {
 		writeMocks[path](path, data, options, callback)
-	}else{
+	} else {
 		_fs.writeFile(path, data, options, callback)
 	}
+}
+fs.clearMocks = () => {
+	readMocks = []
+	writeMocks = {}
+	console.log('测试函数清空了！')
 }
 module.exports = fs
