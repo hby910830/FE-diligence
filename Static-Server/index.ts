@@ -2,6 +2,7 @@ import * as http from 'http'
 import {IncomingMessage, ServerResponse} from 'http';
 import * as fs from 'fs'
 import * as path from 'path'
+import * as url from 'url'
 
 const server = http.createServer();
 const publicDir = path.resolve(__dirname, 'public') //会得到当前目录所在的绝对路径
@@ -27,8 +28,10 @@ server.on('request', (request: IncomingMessage, response: ServerResponse) => {
   //   response.end()
   // })
 
-  const {url, method, headers} = request
-  switch (url) {
+  const {url: src, method, headers} = request  //url:src把url重命名为src
+  const {pathname, search} = url.parse(src)
+
+  switch (pathname) {
     case '/index.html':
       fs.readFile(path.resolve(publicDir, 'index.html'), (error, data) => {
         if (error) throw error
@@ -50,6 +53,9 @@ server.on('request', (request: IncomingMessage, response: ServerResponse) => {
         response.end(data.toString())
       })
       break
+    default:
+      response.statusCode = 404
+      response.end()
   }
 })
 
