@@ -7,15 +7,18 @@ server.on('request', (request: IncomingMessage, response: ServerResponse) => {
   console.log('有人请求了')
   console.log(IncomingMessage)
   console.log(ServerResponse);
-  console.log('request.method');
   console.log(request.method);
-  console.log('request.url');
   console.log(request.url);
-  console.log('request.headers');
   console.log(request.headers);
-  console.log(ServerResponse);
-
-  response.end('hi' + '\n')
+  let array = []
+  request.on('data', chunk =>{
+    array.push(chunk)
+  })
+  request.on('end', () => {
+    const body = Buffer.concat(array).toString()
+    console.log(body);
+    response.end('hi' + '\n')
+  })
 })
 
 server.listen(8888, () => {
