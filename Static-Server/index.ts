@@ -47,6 +47,11 @@ server.on('request', (request: IncomingMessage, response: ServerResponse) => {
   //     })
   //     break
   //   case '/style.css':
+  if(method !== 'GET'){
+    response.statusCode = 405
+    response.end(0)
+    return
+  }
   let filename = pathname.substr(1)
   if(!filename){
     filename = 'index.html'
