@@ -6,7 +6,7 @@ import * as url from 'url'
 
 const server = http.createServer();
 const publicDir = path.resolve(__dirname, 'public') //会得到当前目录所在的绝对路径
-
+let cache = 3600 * 24 * 365
 server.on('request', (request: IncomingMessage, response: ServerResponse) => {
   // console.log('有人请求了')
   // console.log(IncomingMessage)
@@ -69,6 +69,7 @@ server.on('request', (request: IncomingMessage, response: ServerResponse) => {
         response.end('servers business,please try it later!!!')
       }
     } else {
+      response.setHeader('Cache-Control', `public, max-age=${cache}`)
       response.end(data)
     }
   })
