@@ -31,32 +31,36 @@ server.on('request', (request: IncomingMessage, response: ServerResponse) => {
   const {url: src, method, headers} = request  //url:src把url重命名为src
   const {pathname, search} = url.parse(src)
 
-  switch (pathname) {
-    case '/index.html':
-      fs.readFile(path.resolve(publicDir, 'index.html'), (error, data) => {
-        if (error) throw error
-        response.setHeader('Content-type', 'text/html;charset=utf-8')
-        response.end(data.toString())
-      })
-      break
-    case '/main.js':
-      fs.readFile(path.resolve(publicDir, 'main.js'), (error, data) => {
-        if (error) throw error
-        response.setHeader('Content-type', 'application/javascript;charset=utf-8')
-        response.end(data.toString())
-      })
-      break
-    case '/style.css':
-      fs.readFile(path.resolve(publicDir, 'style.css'), (error, data) => {
-        if (error) throw error
-        response.setHeader('Content-type', 'text/css;charset=utf-8')
-        response.end(data.toString())
-      })
-      break
-    default:
+  // switch (pathname) {
+  //   case '/index.html':
+  //     fs.readFile(path.resolve(publicDir, 'index.html'), (error, data) => {
+  //       if (error) throw error
+  //       response.setHeader('Content-type', 'text/html;charset=utf-8')
+  //       response.end(data.toString())
+  //     })
+  //     break
+  //   case '/main.js':
+  //     fs.readFile(path.resolve(publicDir, 'main.js'), (error, data) => {
+  //       if (error) throw error
+  //       response.setHeader('Content-type', 'application/javascript;charset=utf-8')
+  //       response.end(data.toString())
+  //     })
+  //     break
+  //   case '/style.css':
+  const filename = pathname.substr(1)
+  fs.readFile(path.resolve(publicDir, filename), (error, data) => {
+    if (error) {
       response.statusCode = 404
-      response.end()
-  }
+      response.end('page note found!!!')
+    }else{
+      response.end(data.toString())
+    }
+  })
+  // break
+  //   default:
+  //     response.statusCode = 404
+  //     response.end()
+  // }
 })
 
 server.listen(8888, () => {
