@@ -47,13 +47,24 @@ server.on('request', (request: IncomingMessage, response: ServerResponse) => {
   //     })
   //     break
   //   case '/style.css':
-  const filename = pathname.substr(1)
+  let filename = pathname.substr(1)
+  if(!filename){
+    filename = 'index.html'
+  }
   fs.readFile(path.resolve(publicDir, filename), (error, data) => {
     if (error) {
-      response.statusCode = 404
-      response.end('page note found!!!')
-    }else{
-      response.end(data.toString())
+      console.log(error);
+      if (error.errno === -2) {
+        response.statusCode = 404
+        fs.readFile(path.resolve(publicDir, '404.html'), (error, data) => {
+          response.end(data)
+        })
+      }else{
+        response.statusCode = 500
+        response.end('servers business,please try it later!!!')
+      }
+    } else {
+      response.end(data)
     }
   })
   // break
