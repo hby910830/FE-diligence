@@ -7,8 +7,8 @@ describe('db', () => {
 	})
 	it('can read', async () => {
 		const data = [{title: 1, done: false}]
-		fs.setReadFileMock('./xxx', null, JSON.stringify(data))
-		const list = await db.read('./xxx')
+		fs.setReadFileMock('./images', null, JSON.stringify(data))
+		const list = await db.read('./images')
 		expect(list).toStrictEqual(data) //因为[]和[]是两个不同的对象，所以不能用toEqual()
 	})
 	it('can write', async () => {

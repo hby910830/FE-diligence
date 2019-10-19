@@ -12,14 +12,14 @@ const test1: TestCase = data => {
 const test2: TestCase = data => {
   const eventHub = new EventHub()
   let called = false
-  eventHub.on('xxx', message => {
+  eventHub.on('images', message => {
     called = true
     console.assert(message[0] === '今天林志玲结婚了')
     console.assert(message[1] === '言承旭无话可说')
     console.log(message[0])
     console.log(message[1])
   })
-  eventHub.emit('xxx', ['今天林志玲结婚了', '言承旭无话可说'])
+  eventHub.emit('images', ['今天林志玲结婚了', '言承旭无话可说'])
   setTimeout(() => {
     console.assert(called)
     console.log(data);

@@ -7,7 +7,7 @@ let readMocks = []
 fs.setReadFileMock = (path, error, data) => {
 	readMocks[path] = [error, data]
 }
-//fs.readFile('xxx', fn)
+//fs.readFile('images', fn)
 fs.readFile = (path, options, callback) => {
 	if (!callback) {callback = options} // 防止如果用户只传两个参数，就把callback赋值给第二个参数
 	if (path in readMocks) {
