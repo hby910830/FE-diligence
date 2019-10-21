@@ -1,6 +1,6 @@
 {
   "name": "node-todo-yi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "bin": {
     "t": "cli.js"
   },
@@ -9,6 +9,15 @@
   },
   "files": [
     "*.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hby910830/FE-diligence/tree/master/File-System/node-todo-yi"
+  },
+  "keywords": [
+    "Node",
+    "Commander",
+    "Task"
   ],
   "main": "index.js",
   "license": "MIT",
