@@ -6,6 +6,18 @@
   "scripts": {
     "start": "ts-node-dev src/main.ts"
   },
+  "keywords": [
+    "Node",
+    "Commander",
+    "Fanyi",
+    "TypeScript"
+  ],
   "author": "hanbaoyi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.2"
+  }
 }

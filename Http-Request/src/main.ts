@@ -1,1 +1,4 @@
-console.log(1);
+import * as commander from "commander";
+
+const program = new commander.Command();
+console.log(program);
