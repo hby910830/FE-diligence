@@ -12,6 +12,10 @@
     "Fanyi",
     "TypeScript"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hby910830/FE-diligence/tree/master/Http-Request"
+  },
   "author": "hanbaoyi",
   "license": "MIT",
   "dependencies": {
