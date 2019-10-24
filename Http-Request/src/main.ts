@@ -6,11 +6,18 @@ import md5 = require("md5");
 export const translate = wold => {
   const salt = Math.random()
   const sign = md5(appid + wold + salt + secret)
-
+  let to, from
+  if(/[a-zA-Z]/.test(wold)){
+    to = 'zh'
+    from = 'en'
+  }else{
+    to = 'en'
+    from = 'zh'
+  }
   const query: string = querystring.stringify({
     q: wold,
-    from: 'en',
-    to: 'zh',
+    from,
+    to,
     salt,
     appid,
     sign
@@ -41,8 +48,11 @@ export const translate = wold => {
         error_msg?: string;
       }
       const object:BaiduResult = JSON.parse(string)
-
-      console.log(object.trans_result[0].dst);
+      if(object.error_code){
+        console.log(object.error_msg)
+      }else{
+        console.log(object.trans_result[0].dst);
+      }
     })
   });
 
