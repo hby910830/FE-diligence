@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import * as https from 'https'
 import * as querystring from 'querystring'
 import {appid, secret} from './private'
