@@ -3,14 +3,14 @@ import * as querystring from 'querystring'
 import {appid, secret} from './private'
 import md5 = require("md5");
 
-export const translate = wold => {
+export const translate = (wold: string) => {
   const salt = Math.random()
   const sign = md5(appid + wold + salt + secret)
   let to, from
-  if(/[a-zA-Z]/.test(wold[0])){
+  if (/[a-zA-Z]/.test(wold[0])) {
     to = 'zh'
     from = 'en'
-  }else{
+  } else {
     to = 'en'
     from = 'zh'
   }
@@ -31,8 +31,9 @@ export const translate = wold => {
   }
 
   const req = https.request(options, (res) => {
-    let chunks = []
-    res.on('data', chunk => {
+    let chunks: Array<Buffer> = []
+    res.on('data', (chunk: Buffer) => {
+      console.log(chunk.constructor); //Buffer
       chunks.push(chunk)
     });
     res.on('end', () => {
@@ -40,16 +41,16 @@ export const translate = wold => {
       type BaiduResult = {
         from: string;
         to: string;
-        trans_result: [{
-          src: string;
-          dst: string;
-        }],
+        trans_result: { src: string; dst: string; }[],
         error_code?: string;
         error_msg?: string;
       }
-      const object:BaiduResult = JSON.parse(string)
-      if(object.error_code){
-        let table = {
+      const object: BaiduResult = JSON.parse(string)
+      type ErrorMap = {
+        [key: string]: string
+      }
+      if (object.error_code) {
+        let table: ErrorMap = {
           52001: '请求超时',
           52002: '系统错误',
           52003: '未授权用户',
@@ -63,10 +64,9 @@ export const translate = wold => {
           58002: '服务当前已关闭',
           90107: '认证未通过或未生效',
         }
-        console.log(object.error_code);
         console.log(table[object.error_code])
         process.exit(1)
-      }else{
+      } else {
         console.log(object.trans_result[0].dst);
         process.exit(0)
       }
