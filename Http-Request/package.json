@@ -1,6 +1,6 @@
 {
   "name": "fanyi-yi",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "description": "这是一个基于Node.js和TypeScript的英汉互译命令行小工具",
   "main": "dist/main.js",
   "scripts": {

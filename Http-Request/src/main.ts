@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import * as https from 'https'
 import * as querystring from 'querystring'
 import {appid, secret} from './private'
@@ -34,7 +33,7 @@ export const translate = (wold: string) => {
   const req = https.request(options, (res) => {
     let chunks: Array<Buffer> = []
     res.on('data', (chunk: Buffer) => {
-      console.log(chunk.constructor); //Buffer
+      // console.log(chunk.constructor); //Buffer
       chunks.push(chunk)
     });
     res.on('end', () => {
