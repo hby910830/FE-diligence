@@ -28,9 +28,21 @@ export const translate = wold => {
     res.on('data', chunk => {
       chunks.push(chunk)
     });
-    res.on('end', () =>{
+    res.on('end', () => {
       const string = Buffer.concat(chunks).toString()
-      console.log(string);
+      type BaiduResult = {
+        from: string;
+        to: string;
+        trans_result: [{
+          src: string;
+          dst: string;
+        }],
+        error_code?: string;
+        error_msg?: string;
+      }
+      const object:BaiduResult = JSON.parse(string)
+      
+      console.log(object);
     })
   });
 
