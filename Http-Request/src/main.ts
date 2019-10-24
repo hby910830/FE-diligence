@@ -1,25 +1,29 @@
 import * as https from 'https'
 import * as querystring from 'querystring'
-import {user} from '../private'
+import {user} from './private'
 import md5 = require("md5");
 
 export const translate = wold => {
-  const random = Math.random()
-  const sign = md5(`${user.appid}`)
-  const string: string = querystring.stringify({
+  const salt = Math.random()
+  const appid = user.appid
+  const secret = user.secret
+  const sign = md5(appid + wold + salt + secret)
+  console.log(sign);
+  return
+  const query: string = querystring.stringify({
     q: wold,
     from: 'en',
     to: 'zh',
-    salt: Math.random(),
-    appid: user.appid,
-    sign: ''
+    salt,
+    appid,
+    sign
   })
-  console.log(string);
+  console.log(query);
   return
   const options = {
     hostname: 'api.fanyi.baidu.com',
     port: 443,
-    path: '/api/trans/vip/translate?q=apple&from=en&to=zh&appid=20191024000344145&salt=1435660288&sign=f561c3e5da47210ca61d398b508a9a79',
+    path: '/api/trans/vip/translate?' + query,
     method: 'GET'
   }
 
