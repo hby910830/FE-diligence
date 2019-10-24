@@ -2,13 +2,16 @@
   "name": "fanyi-yi",
   "version": "0.0.1",
   "description": "这是一个基于Node.js和TypeScript的英汉互译命令行小工具",
-  "main": "main.ts",
+  "main": "dist/main.js",
   "scripts": {
     "start": "ts-node-dev src/main.ts"
   },
   "bin": {
     "fanyi": "dist/cli.js"
   },
+  "files": [
+    "dist/**/*.js"
+  ],
   "keywords": [
     "Node",
     "Commander",
