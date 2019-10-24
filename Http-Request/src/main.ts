@@ -7,7 +7,7 @@ export const translate = wold => {
   const salt = Math.random()
   const sign = md5(appid + wold + salt + secret)
   let to, from
-  if(/[a-zA-Z]/.test(wold)){
+  if(/[a-zA-Z]/.test(wold[0])){
     to = 'zh'
     from = 'en'
   }else{

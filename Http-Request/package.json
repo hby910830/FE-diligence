@@ -6,6 +6,9 @@
   "scripts": {
     "start": "ts-node-dev src/main.ts"
   },
+  "bin": {
+    "fanyi": "dist/cli.js"
+  },
   "keywords": [
     "Node",
     "Commander",
