@@ -50,8 +50,10 @@ export const translate = wold => {
       const object:BaiduResult = JSON.parse(string)
       if(object.error_code){
         console.log(object.error_msg)
+        process.exit(1)
       }else{
         console.log(object.trans_result[0].dst);
+        process.exit(0)
       }
     })
   });
