@@ -41,8 +41,8 @@ export const translate = wold => {
         error_msg?: string;
       }
       const object:BaiduResult = JSON.parse(string)
-      
-      console.log(object);
+
+      console.log(object.trans_result[0].dst);
     })
   });
 
