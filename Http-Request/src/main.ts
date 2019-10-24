@@ -15,7 +15,7 @@ export const translate = wold => {
     appid,
     sign
   })
-  
+
   const options = {
     hostname: 'api.fanyi.baidu.com',
     port: 443,
@@ -24,12 +24,13 @@ export const translate = wold => {
   }
 
   const req = https.request(options, (res) => {
-    let data = []
-    res.on('data', (chunk) => {
-      const str = Buffer.concat(chunk)
+    let chunks = []
+    res.on('data', chunk => {
+      chunks.push(chunk)
     });
-    res.on('end', res =>{
-      res.push(data)
+    res.on('end', () =>{
+      const string = Buffer.concat(chunks).toString()
+      console.log(string);
     })
   });
 
