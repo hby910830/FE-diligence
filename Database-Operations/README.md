@@ -102,3 +102,5 @@ select * from xxx;查看表内容
 ## 修改记录
 ``update user set age=30 where name='hanbaoyi';``
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-57f00c708f6d57e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+- **注意，永远不要自己写update，delete语句，如果忘了写where，整个表数据都会被改**
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-3169730ac216b8d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
