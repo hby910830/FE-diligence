@@ -38,6 +38,11 @@ docker run 启动新容器
 5.了解如何添加记录
 6.了解如何对记录增删改查
 ```
+- 推荐文档
+
+[devdocs.io](https://devdocs.io/postgresql~11/tutorial-createdb) 开启postgresql文档
+
+[菜鸟教程](https://www.runoob.com/mysql/mysql-create-database.html)
 
 ## 如何用命令行连接mysql
 - Docker exec命令
@@ -78,3 +83,22 @@ select * from xxx;查看表内容
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-6918d53e084587d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-69ab6ed0c254d1fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 删除表
+``drop table user;`` (大小写无所谓，一定要写分号！)
+## 删除数据库
+``drop database han;`` (大小写无所谓，一定要写分号！)
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-a2bef9db8ecc648d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+## 添加记录
+``insert into user (name,age) values ('hanbaoyi', 28);``
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-e2f7b7b5e5835f89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 删除记录
+``delete from user where name='frank';``
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-0dc841fedfd20532.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 修改记录
+``update user set age=30 where name='hanbaoyi';``
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-57f00c708f6d57e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
