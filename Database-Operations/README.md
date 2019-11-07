@@ -28,6 +28,16 @@ docker run 启动新容器
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-f145b6bd814ffff2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+## CRM学习法(COPY,RUN,MODIFY)
+- 目标
+```
+1.了解如何连接mysql server
+2.了解如何创建数据库
+3.了解如何创建表(注意编码utf8mb4)
+4.了解如何对表增删改查
+5.了解如何添加记录
+6.了解如何对记录增删改查
+```
 
 ## 如何用命令行连接mysql
 - Docker exec命令
