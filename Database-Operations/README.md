@@ -51,3 +51,9 @@ select * from xxx;查看表内容
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-e24ef3327c51933e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-f800e1bc58f38149.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+## insert(增)
+- 创建数据库
+
+``CREATE DATABASE IF NOT EXISTS han DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_520_ci;``
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-bbefa4c134bcf0be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-4c747182c689ec51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
