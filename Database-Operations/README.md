@@ -22,7 +22,7 @@
 ```
 docker ps 查看容器运行状态
 docker kill mysql1 关掉容器
-docker container run mysql1 开启刚关掉的容器
+docker container start mysql1 开启刚关掉的容器
 docker rm mysql1 删掉容器，必要时可加上-f
 docker run 启动新容器
 ```
