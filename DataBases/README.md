@@ -58,3 +58,9 @@
 - 解决办法
 ``把系名和系主任单独建表``
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-6885c592a8474047.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 总结
+- 第一范式：属性不可分割
+- 第二范式：字段完全依赖于键
+- 第三范式：字段没有间接依赖于键
+- BC范式：键中的属性也不存在间接依赖(多个键之间互相依赖)
