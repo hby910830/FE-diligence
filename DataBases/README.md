@@ -46,3 +46,15 @@
 学生表（学号、姓名、系名、班主任）
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-3ae06cfc6039d126.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 第三范式 3NF
+- 定义（不准确）
+```
+一个表里不能有两层依赖
+给出学号，就能确定系名：系名依赖于学号
+给出系名，就能确定系主任：系主任依赖于系名
+所以，系主任间接依赖于学号
+```
+- 解决办法
+``把系名和系主任单独建表``
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-6885c592a8474047.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
