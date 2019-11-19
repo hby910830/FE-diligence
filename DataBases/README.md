@@ -148,3 +148,14 @@ FROM Table_A A
 INNER JOIN Table_B B
 ON A.PK = B.PK;
 ```
+
+# 试试看1
+- 创建数据库
+``CREATE DATABASE IF NOT EXISTS han DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_520_ci; ``
+- 创建表
+```
+create tables users(id serial, name text);
+create table staffs(id serial, name text);
+create table orders(id serial, user_id bigint unsigned, staff_id bigint unsigned, amount int unsigned);
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-6dca49a38122e618.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
