@@ -159,3 +159,12 @@ create table staffs(id serial, name text);
 create table orders(id serial, user_id bigint unsigned, staff_id bigint unsigned, amount int unsigned);
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-6dca49a38122e618.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# 试试看2
+- 创建记录
+```
+insert into users (name) values ('XiaoMing');
+insert into staffs (name) values ('XiaoHong');
+insert into orders (user_id,staff_id,amount) values (1,1,100);
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-f813f1e6088cfc46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
