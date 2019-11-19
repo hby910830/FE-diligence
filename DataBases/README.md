@@ -178,3 +178,11 @@ insert into orders (user_id,staff_id,amount) values (1,1,100);
 
 ``select users.name, orders.amount from users left join orders on users.id = orders.user_id;``
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-9023667b4c645047.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 其他 join 
+- Left join
+> 会保留右边的null，以保证左边都显示
+- Right join
+> 会保留左边的null，以保证右边都显示
+- Full outer join
+> 会保留两边的null，以保证两边都显示
