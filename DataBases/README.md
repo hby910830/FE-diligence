@@ -173,3 +173,8 @@ insert into orders (user_id,staff_id,amount) values (1,1,100);
 
 ``select users.name, orders.amount from users inner join orders on users.id=orders.user_id;``
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-71e9fc08d07c7d91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 使用left join 
+
+``select users.name, orders.amount from users left join orders on users.id = orders.user_id;``
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-9023667b4c645047.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
