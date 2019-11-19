@@ -168,3 +168,8 @@ insert into staffs (name) values ('XiaoHong');
 insert into orders (user_id,staff_id,amount) values (1,1,100);
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-f813f1e6088cfc46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 使用inner join 
+
+``select users.name, orders.amount from users inner join orders on users.id=orders.user_id;``
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-71e9fc08d07c7d91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
