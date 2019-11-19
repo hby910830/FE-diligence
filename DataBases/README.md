@@ -119,3 +119,32 @@
 >比如关联的有效期，有效期为一年
 >
 > 比如关联的级别，店铺会员分为VIP1～6
+
+
+## JOIN
+- 连接表
+> inner join
+>
+> left join
+>
+> right join
+>
+> full outer join
+
+- 看图巧记
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-e4da987545568184.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-a417b24219095de5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+[参考文章](https://zhuanlan.zhihu.com/p/29234064)
+
+## 语法
+把表名改为
+>T1{INNER|{LEFT|RIGHT|FULL}[OUTER]} JOIN T2 ON boolean_expression
+例如:
+```
+SELECT A.PK AS A_PK, B.PK AS B_PK,
+       A.Value AS A_Value, B.Value AS B_Value
+FROM Table_A A
+INNER JOIN Table_B B
+ON A.PK = B.PK;
+```
