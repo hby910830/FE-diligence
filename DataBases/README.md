@@ -199,3 +199,25 @@ select count(id) from comments where blog_id=8
 每次删除comment则-1
 可以的
 ```
+
+## 事务
+- 有些操作必须一次完成
+```
+用户评论之后，要做两件事
+第一步，在comment表新增记录
+第二部，在blogs表将对应的comment_count+1
+如果第一步执行了，第二步没执行怎么办
+数据就乱了
+```
+
+## 使用事务
+[菜鸟教程](https://www.runoob.com/mysql/mysql-transaction.html)
+```
+create table runoob_transaction_test( id int(5)) engine=innodb;  # 创建数据表
+begin;  # 开始事务
+语句1；语句2；语句3；
+commit; # 提交事务
+rollback;   # 回滚
+select * from runoob_transaction_test;   # 因为回滚所以数据没有插入
+```
+> 只要有一句出错，则全都不生效
