@@ -221,3 +221,6 @@ rollback;   # 回滚
 select * from runoob_transaction_test;   # 因为回滚所以数据没有插入
 ```
 > 只要有一句出错，则全都不生效
+
+
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-f720ceac434b7027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
