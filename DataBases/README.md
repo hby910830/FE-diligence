@@ -186,3 +186,16 @@ insert into orders (user_id,staff_id,amount) values (1,1,100);
 > 会保留左边的null，以保证右边都显示
 - Full outer join
 > 会保留两边的null，以保证两边都显示
+
+
+## 缓存字段
+> 假设一个博客包含多个评论comments
+- 如何获取博客的评论数
+```
+select count(id) from comments where blog_id=8
+这样太慢了
+可不可以在blog表上加一个comment_count字段
+每次添加comment则+1
+每次删除comment则-1
+可以的
+```
