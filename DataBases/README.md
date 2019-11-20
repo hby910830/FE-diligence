@@ -224,3 +224,17 @@ select * from runoob_transaction_test;   # 因为回滚所以数据没有插入
 
 
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-f720ceac434b7027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 索引
+- 语法
+```
+create unique index index1 on users(name(100));  //这里的100是索引长度，规定不能超过该字段类型的最大字符长度
+show index in users;
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-79bf72190c2a73d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+- 用途
+> 提高搜索效率
+>
+>where xxx>100 那么我们可以创建xxx的索引
+>
+>where xxx>100 and yyy>200,  创建xxx,yyy的索引
