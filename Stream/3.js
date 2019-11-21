@@ -9,5 +9,6 @@ server.listen(8888)
 console.log('localhost:8888')
 
 /*分析
-
+查看node.js内存占用，基本不会超过30Mb
+文件stream和response stream通过管道相连
 * */
