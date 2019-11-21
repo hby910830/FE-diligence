@@ -3,10 +3,22 @@ const fs = require('fs')
 const server = http.createServer()
 server.on('request', (request, response) => {
 	const stream = fs.createReadStream('./bigFile.txt')
+	//管道的第一种实现（推荐）
 	stream.pipe(response) //pipe 管道
+	//管道的第二种实现
+	// /*stream一有数据，就塞给response*/
+	// stream.on('data', chunk =>{
+	// 	response.write(chunk)
+	// })
+	// /*stream停了，就停掉response*/
+	// stream.on('end',() => {
+	// 	response.end()
+	// })
 })
+
 server.listen(8888)
 console.log('localhost:8888')
+
 
 /*分析
 查看node.js内存占用，基本不会超过30Mb
