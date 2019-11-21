@@ -10,3 +10,7 @@ server.on('request', (request, response) => {
 })
 server.listen(8888)
 console.log('localhost:8888')
+
+/*分析
+用任务管理器看看Node.js内存占用，大概110Mb
+* */
