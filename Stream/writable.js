@@ -7,4 +7,8 @@ const outStream = new Writable({
 	}
 })
 
-process.stdin.pipe(outStream)
+// process.stdin.pipe(outStream)
+//等价于下面的写法
+process.stdin.on('data', chunk => {
+	outStream.write(chunk)
+})
