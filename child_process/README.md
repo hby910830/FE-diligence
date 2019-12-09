@@ -32,3 +32,15 @@
 3.多个进程之间会出现抢资源（如打印机）的现象
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-4eb8dc6b5442e947.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# 阻塞
+- 等待执行的进程中
+```
+1.都是非运行态
+2.一些(A)在等待CPU资源
+3.另一些(B)在等待I/O完成（如文件读取）
+4.如果这时候把CPU分配给B进程，B还是在等待I/O
+5.我们把这个B叫做阻塞进程
+6.因此，分派程序只会把CPU分配给非阻塞进程
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-7a7a692404f837bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
