@@ -140,3 +140,4 @@
 1.会多出一个message事件，用于父子通信
 2.会多出一个send方法
 ```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-c7f177e54200a213.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
