@@ -107,3 +107,12 @@
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-1015b18b482691b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-91c41fa7eed51752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- execFile
+```
+执行特定的程序
+命令行的参数要用数组的形式传入，无法注入
+支持stream
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-27c14b24cfb6ae77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-e5065565ea12ffda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
