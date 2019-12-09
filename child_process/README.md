@@ -7,6 +7,7 @@
 # 进程 Process
 - 场景
 > notepad.exe 是一个程序，不是进程
+>
 > 双击 notepad.exe 时，操作系统会开启一个进程
 - 定义
 ```
