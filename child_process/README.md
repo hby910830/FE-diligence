@@ -85,3 +85,24 @@
 2.等到子进程运行结束之后，主进程再用回调函数读取子进程的运行结果
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-63e9175e62f13e55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# API
+- exec(cmd, options, fn)
+```
+1.execute的缩写，用于执行命令
+2.同步版本：execSync(Node.js一般不使用同步)
+```
+- Stream
+```
+返回一个流
+```
+- Promise
+```
+可以使其Promise化（用util.promisify）
+```
+- 有漏洞
+```
+如果cmd被注入了，可能执行意外的代码
+推荐使用execFile
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-1015b18b482691b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
