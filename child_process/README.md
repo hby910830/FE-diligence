@@ -77,3 +77,11 @@
 - 分析
 
 ``子进程V.S.线程``
+
+# child_process
+- 使用目的
+```
+1.子进程的运行结果存储在系统缓存之中（最大200Kb）
+2.等到子进程运行结束之后，主进程再用回调函数读取子进程的运行结果
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-63e9175e62f13e55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
