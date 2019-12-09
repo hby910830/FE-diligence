@@ -102,17 +102,17 @@
 ```
 - 有漏洞
 ```
-如果cmd被注入了，可能执行意外的代码
-推荐使用execFile
+1.如果cmd被注入了，可能执行意外的代码
+2.推荐使用execFile
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-1015b18b482691b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-91c41fa7eed51752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - execFile
 ```
-执行特定的程序
-命令行的参数要用数组的形式传入，无法注入
-支持stream
+1.执行特定的程序
+2.命令行的参数要用数组的形式传入，无法注入
+3.支持stream
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-27c14b24cfb6ae77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-e5065565ea12ffda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -120,12 +120,23 @@
 
 - spawn
 ```
-用法与execFile方法类似
-没有回调函数，只能通过流事件得到结果
-没有最大200Kb限制（因为是stream）
+1.用法与execFile方法类似
+2.没有回调函数，只能通过流事件得到结果
+3.没有最大200Kb限制（因为是stream）
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-5645e1cb1a49e1ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - 经验
 
 ``能用spawn的时候就不要用execFile``
+
+- fork
+```
+1.创建一个子进程，执行Node脚本
+2.fork('./child.js')相当于spawn('node', ['./child.js'])
+```
+- 特点
+```
+1.会多出一个message事件，用于父子通信
+2.会多出一个send方法
+```
