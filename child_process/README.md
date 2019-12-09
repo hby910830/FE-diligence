@@ -117,3 +117,15 @@
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-27c14b24cfb6ae77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-e5065565ea12ffda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-91e451e918591579.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- spawn
+```
+用法与execFile方法类似
+没有回调函数，只能通过流事件得到结果
+没有最大200Kb限制（因为是stream）
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-5645e1cb1a49e1ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 经验
+
+``能用spawn的时候就不要用execFile``
