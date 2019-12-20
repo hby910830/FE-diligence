@@ -46,3 +46,16 @@ curl -v
 ```
 
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-c64cec7dbcf0e488.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# Web框架
+- 功能
+> 更方便的处理HTTP请求与响应
+> 更方便的链接数据库、Redis
+> 更方便的路由
+> 其他：HTML模板
+
+- 理念
+> Web框架的主流思路都是MVC
+> Model处理数据相关逻辑
+> View处理视图相关逻辑，前后分离之后，View不重要
+> Controller负责其他逻辑
