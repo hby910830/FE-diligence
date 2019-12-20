@@ -59,3 +59,6 @@ curl -v
 > Model处理数据相关逻辑
 > View处理视图相关逻辑，前后分离之后，View不重要
 > Controller负责其他逻辑
+
+# 架构示意
+ ![image.png](https://upload-images.jianshu.io/upload_images/1181204-f3bcd4f9d9eca6db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
