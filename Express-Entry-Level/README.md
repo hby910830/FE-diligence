@@ -16,3 +16,23 @@ curl -v
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-f3ccf0342c87dd2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-416e5e116743b8d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-eec8f78affccf760.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+# 请求和响应
+请求
+- 分为四部分
+> 一、请求行
+> 二、请求头
+> 三、回车
+> 四、请求体/消息体
+
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-afc3bfcd87d1f8ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+响应
+- 分为四部分
+> 一、状态行
+> 二、响应头
+> 三、回车
+> 四、响应体/消息体
+
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-c64cec7dbcf0e488.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
