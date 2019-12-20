@@ -26,6 +26,11 @@ curl -v
 > 三、回车
 > 四、请求体/消息体
 
+```
+如果请求体的内容为JSON
+那么请求头就要有Content-Type: application/json
+```
+
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-afc3bfcd87d1f8ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 响应
@@ -34,5 +39,10 @@ curl -v
 > 二、响应头
 > 三、回车
 > 四、响应体/消息体
+
+```
+如果响应体的内容为JSON
+那么响应头就要有Content-Type: application/json
+```
 
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-c64cec7dbcf0e488.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
