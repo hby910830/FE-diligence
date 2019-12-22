@@ -138,3 +138,17 @@ tsc --init
 ```
 - 运行
 ``ts-node-dev app.ts``
+
+# app的类型
+- 使用IDE查看类型
+> 用VSCode或WebStorm可以查看 app 对象的类型
+>
+> 类型为Express接口
+>  
+> Express extends Application
+> 
+> Application extends EventEmitter,IRouter,...
+> 
+> 其中，IRouter包含了 get/post/put等方法
+> 
+> 有了TypeScript，都不用看文档了
