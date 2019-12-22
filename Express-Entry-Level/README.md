@@ -80,3 +80,15 @@ curl -v
  封装级别高一点点，只需理解Express的编程模型即可
  ```
  [中文文档在此](https://expressjs.com/zh-cn/)
+ 
+ # Hello World
+ - 安装 express
+ > yarn add express
+ > 或者npm install express
+ > 以上命令二选一，不要混用
+ 
+ - 创建app.js
+ > 内容 Copy 自文档
+ > 然后Run一下app.js，命令为node app.js，如果不想重启命令，用node-dev app.js
+ > 打开http://localhost:3000预览
+ > Modify几处代码，比如改内容、路径、端口
