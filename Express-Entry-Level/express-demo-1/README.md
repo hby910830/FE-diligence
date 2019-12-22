@@ -1,7 +1,7 @@
 # 使用方法
 
 ```
-git clone git@github.com:hby910830/express-starter-demo.git <你的目录名>
+git clone git@github.com:hby910830/express-start-demo.git <你的目录名>
 cd <你的目录名>
 yarn install
 node app.js 
