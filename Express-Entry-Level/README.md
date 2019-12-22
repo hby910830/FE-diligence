@@ -204,3 +204,27 @@ tsc --init
 
 # express 的编程模型
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-6381ebaf0f8565c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# 中间件
+``fn就是中间件，因为它是被插入到启动和结束中间的物件``
+
+# 优点
+- 模块化
+> 这种模型使得每个功能都能通过一个函数实现
+>
+> 然后通过app.use将这个函数整合起来
+>
+> 如果把函数放到文件或npm里，就实现了模块化
+
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-64e1286e30ac4e07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 以上图为例
+> app.use(logger('dev'))
+> 
+> logger('dev')会返回一个函数
+> 
+> 这个函数会在每次请求到达的时候，打印出信息
+> 
+> 我们根本不用去了解它是怎么做到的
+> 
+> 我们也可以很快做出一个类似的模块
