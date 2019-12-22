@@ -188,3 +188,16 @@ tsc --init
 
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-6f765acf655b3a4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+# 理解app.use
+- 创建新目录express-demo-2
+> 尝试使用req.url 和 res.send
+>
+> 多次使用会怎样？会报错
+> 
+>改成res.write,因为流
+> 
+> 为什么不会关闭呢？加上res.end()才会关闭
+>
+> next什么时候可以省略？ 最后一个中间件可以
+
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-7d00e6a0378859fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
