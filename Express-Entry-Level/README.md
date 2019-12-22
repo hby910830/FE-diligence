@@ -62,3 +62,21 @@ curl -v
 
 # 架构示意
  ![image.png](https://upload-images.jianshu.io/upload_images/1181204-f3bcd4f9d9eca6db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+ 
+ # 处理HTTP请求与响应
+ - 最简单的封装
+ ```
+ 将请求封装为[['get', '/xxx'], {请求头}, '请求体']
+ 将响应封装为[status, {响应头}, '响应体']
+ ```
+ - Node.js的封装
+ ```
+ 封装在http模块中
+ 使用request(IncomingMessage的实例)读取请求
+ 使用response(ServerResponse的实例)设置响应
+ ```
+ - Express的封装
+ ```
+ 封装级别高一点点，只需理解Express的编程模型即可
+ ```
+ [中文文档在此](https://expressjs.com/zh-cn/)
