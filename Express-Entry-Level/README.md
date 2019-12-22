@@ -201,3 +201,6 @@ tsc --init
 > next什么时候可以省略？ 最后一个中间件可以
 
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-7d00e6a0378859fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# express 的编程模型
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-6381ebaf0f8565c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
