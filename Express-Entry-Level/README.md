@@ -228,3 +228,23 @@ tsc --init
 > 我们根本不用去了解它是怎么做到的
 > 
 > 我们也可以很快做出一个类似的模块
+
+# 路由
+- 使用app.use如何实现路由
+```
+app.use((request, response, next) => {
+	if (request.path === '/' && request.method === 'GET') {
+		response.send('根目录')
+	}
+	next()
+})
+```
+- 更方便的写法
+```
+app.use('/xxx', fn)
+app.get('/xxx', fn)
+app.post('/xxx', fn)
+app.route('/xxx').all(f1).get(f2).post(f3)
+这些都是 API 糖
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-5934103668a806d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
