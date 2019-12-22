@@ -248,3 +248,19 @@ app.route('/xxx').all(f1).get(f2).post(f3)
 这些都是 API 糖
 ```
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-5934103668a806d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# 错误处理
+- next()能传参数吗？
+```
+可以看文档，也可以看TypeScript定义
+推荐后者
+```
+- next(error)
+``会直接进入errorHandler,不执行后面的中间件``
+- 如何自定义errorHandler
+```
+1.还是看文档，文档说一般在最后定义（只有英文文档有写）
+2.app.use((err, req, res, next) => {})
+3.可以定义多个这样的中间件
+```
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-f687bf84715f5850.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
