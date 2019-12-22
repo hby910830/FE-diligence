@@ -169,3 +169,22 @@ tsc --init
 > app.set用于改配置，app.use用于使用中间件
 
 ![image.png](https://upload-images.jianshu.io/upload_images/1181204-4ba14f0d2cf4f589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# 改为TypeScript
+- 改写
+> app.js改为app.ts
+>
+> yarn add @types/node --dev ,这样才能使用require
+>
+> 你也可以用import代替require
+>
+> 你也可以用const代替var
+>
+> 需要 RequestHandler 和 ErrorRequestHandler 断言
+>
+> 将bin/www中的入口改为app.ts
+>
+> 添加start:ts脚本，将node改为ts-node-dev
+
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-6f765acf655b3a4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
