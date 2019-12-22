@@ -1,8 +1,10 @@
 const express = require('express');
+const logger = require('./logger')
 const app = express();
 
+app.use(logger('dev'))
+
 app.use(function (req, res, next) {
-	console.log(req.url)
 	res.write('hi')
 	next()    //必须调用next才会往下执行
 });
