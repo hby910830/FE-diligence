@@ -17,8 +17,22 @@ app.use('/xxx', (request, response, next) => {
 })
 
 app.get('/aaa', (request, response, next) => {
-	response.send('aaa页面')
-	next()
+	if(true){
+		next('未登录')  //如果next传参数，就会走到错误处理中间件
+	}else {
+		next()
+	}
+})
+
+app.use((error, request, response, next) => {
+	response.send(error)
+	next(error)
+})
+let count = 0
+app.use((error, request, response, next) => {
+	count += 1
+	console.log(`目前有${count}个错误`)
+	next(error)
 })
 
 app.route('/bbb')
