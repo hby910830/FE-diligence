@@ -152,3 +152,20 @@ tsc --init
 > 其中，IRouter包含了 get/post/put等方法
 > 
 > 有了TypeScript，都不用看文档了
+
+# express-generator
+- 安装
+```yarn global add express-generator```
+- 使用
+> express -h 查看帮助
+>
+> 创建文件： express --view=ejs 目录名
+
+- CRM学习法
+> yarn install; yarn start
+>
+> 分析app.js，主要API为 app.set 和 app.use
+>
+> app.set用于改配置，app.use用于使用中间件
+
+![image.png](https://upload-images.jianshu.io/upload_images/1181204-4ba14f0d2cf4f589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
