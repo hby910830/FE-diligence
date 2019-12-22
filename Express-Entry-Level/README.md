@@ -100,3 +100,15 @@ curl -v
 app.get('xxx', fn)用于对GET /xxx请求作出响应
 app.listen(3000,fn)开启端口监听
 ```
+
+# 使用 TypeScript
+- 准备工作
+```
+yarn global add typescript ts-node ts-node-dev 全局安装工具
+yarn add @types/express --dev 安装类型支持
+tsc --init
+修改tsconfig的target和noImplicitAny
+将 require 改为 import
+```
+- 运行
+``ts-node-dev app.ts``
