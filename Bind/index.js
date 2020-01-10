@@ -8,7 +8,7 @@ function bind(asThis) {
 	//this就是函数
 	const fn = this
 	return function () { //生产新的函数
-		return fn.call(asThis) //新的函数会调用就的fn函数，并把asThis作为this传回去
+		return fn.call(asThis) //新的函数会调用旧的fn函数，并把asThis作为this传回去
 	}
 }
 
