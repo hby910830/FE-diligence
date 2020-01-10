@@ -14,7 +14,7 @@ function bind(asThis) {
 	}
 	return function () { //生产新的函数
 		var args2 = Array.prototype.slice.call(arguments, 0)
-		return fn.apply(asThis, args.concat(args2)) //新的函数会调用就的fn函数，并把asThis作为this传回去
+		return fn.apply(asThis, args.concat(args2)) //新的函数会调用旧的fn函数，并把asThis作为this传回去
 	}
 }
 
