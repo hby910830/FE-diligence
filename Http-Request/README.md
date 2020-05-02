@@ -1,7 +1,7 @@
 # Install
 
 ```
-yarn add global fanyi-yi
+yarn global add fanyi-yi
 ```
 
 # Run
